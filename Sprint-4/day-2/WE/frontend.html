@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common.css">
+    <title>Frontend</title>
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        img{
+            width: 100%;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        body > h1{
+            text-align: center;
+            font-size: 45px;
+        }
+        #container{
+            width: 80%;
+            margin: 60px auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        #container > div{
+            text-align: center;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border-radius: 15px;
+        }
+        #container > div > h3{
+            margin: 5px 0;
+            font-size: 25px;
+        }
+        #container > div > p{
+            margin-top: 5px;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: gray;
+        }
+        #container > div >img:nth-child(4){
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </div>
+
+    <div id="container">
+    </div>
+</body>
+</html>
+
+<script>
+
+    var investors = JSON.parse(localStorage.getItem("investors"));
+
+    if(investors == null)
+    {
+        document.querySelector("#container").innerText = "No Content Found";
+    }
+    else{
+            investors.forEach(function(el){
+            var box = document.createElement("div");
+            var avtar = document.createElement("img");
+            avtar.setAttribute("src",el.avtar);
+
+            var name = document.createElement("h3");
+            name.innerText = el.name;
+
+            var role = document.createElement("p");
+            role.innerText = el.role;
+
+            var logo = document.createElement("img");
+            logo.setAttribute("src",el.logo);
+
+            box.append(avtar,name,role,logo);
+
+            document.querySelector("#container").append(box);
+        });
+    }
+</script>

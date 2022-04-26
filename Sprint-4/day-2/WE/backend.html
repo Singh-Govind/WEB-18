@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common.css">
+    <title>Backend</title>
+</head>
+<body>
+    <div class="navbar">
+        <div><a href="backend.html">Backend</a></div>
+        <div><a href="frontend.html">Frontend</a></div>
+    </div>
+
+    <form id="investorsForm">
+        <input type="text" id="name" placeholder="Enter name">
+        <input type="text" id="imgURL" placeholder="Enter image Link">
+        <input type="text" id="companyLogo" placeholder="Enter logo Link">
+        <input type="text" id="role" placeholder="Enter role">
+        <input type="submit">
+    </form>
+</body>
+</html>
+
+<script>
+    var form = document.querySelector("#investorsForm");
+    var investorsData = JSON.parse(localStorage.getItem("investors")) || [];
+
+    form.addEventListener("submit", function(){
+        event.preventDefault();
+
+        var data = {
+            name: form.name.value,
+            avtar: form.imgURL.value,
+            logo: form.companyLogo.value,
+            role: form.role.value
+        }
+
+        investorsData.push(data);
+
+        localStorage.setItem("investors",JSON.stringify(investorsData));
+        
+    });
+</script>

@@ -1,0 +1,28 @@
+a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 50px;
+}
+
+.navbar{
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(83, 83, 239);
+    padding: 0 30px;
+}
+.navbar > div{
+    padding: 20px 0;
+}
+.navbar > div:hover{
+    text-decoration: underline;
+}
+
+#investorsForm{
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+}
+
