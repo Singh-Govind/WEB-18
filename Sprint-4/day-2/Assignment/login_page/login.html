@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+
+    <style>
+        #login{
+            width: 30%;
+            margin: 50px auto;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            border-radius: 20px;
+            padding: 110px 50px;
+        }
+        input{            
+            box-sizing: border-box;
+            display: block;
+            margin: auto;
+            width: 100%;
+            font-size: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        input:last-child{
+            border: none;
+            color: gray;
+            margin-top: 80px;
+        }
+        p{
+            font-size: 18px;
+            text-align: right;
+            margin-top: 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form id="login">
+        <input type="text" id="email" placeholder="Enter Your Email">
+        <input type="password" id="pass" placeholder="Enter Password">
+        <input type="submit" value="Log In">
+
+        <p>
+            <a href="signup.html">Create an account</a>
+        </p>
+    </form>
+</body>
+</html>
+
+<script>
+    var user_data = JSON.parse(localStorage.getItem("user_arr")) || [];
+    var login = document.querySelector("#login");
+
+    if(JSON.parse(localStorage.getItem("user_arr")) == null)
+        console.log("No Data");
+    else{
+        
+        login.addEventListener("submit", function(){
+            event.preventDefault();
+            
+            var email = login.email.value.trim();
+            var pass = login.pass.value.trim();
+
+            user_data.forEach(function(el){
+                if(el.email == email && el.pass == pass)
+                {
+                    alert("Login Success");
+                }
+                else
+                {
+                    alert("Incorrect details");
+                }
+            });
+        });
+    }
+    
+</script>

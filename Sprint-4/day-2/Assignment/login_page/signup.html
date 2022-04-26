@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <style>
+        #signup{
+            width: 30%;
+            margin: 50px auto;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            border-radius: 20px;
+            padding: 110px 50px;
+        }
+        input{            
+            box-sizing: border-box;
+            display: block;
+            margin: auto;
+            width: 100%;
+            font-size: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        input:last-child{
+            border: none;
+            color: gray;
+            margin-top: 80px;
+        }
+        p{
+            font-size: 18px;
+            text-align: right;
+            margin-top: 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form id="signup">
+        <input type="text" id="f_name" placeholder="Enter Your Full Name">
+        <input type="text" id="email" placeholder="Enter Your Email">
+        <input type="password" id="pass" placeholder="Enter Password">
+        <input type="submit" value="Sign Up">
+
+        <p>
+            <a href="login.html">Login to your account</a>
+        </p>
+    </form>
+</body>
+</html>
+
+<script>
+    var signup = document.querySelector("#signup");
+    var user_details = JSON.parse(localStorage.getItem("user_arr")) || [];
+
+    signup.addEventListener("submit", function(){
+        event.preventDefault();
+
+        var data = {
+            name: signup.f_name.value.trim(),
+            email: signup.email.value.trim(),
+            pass: signup.pass.value.trim()
+        }
+
+        user_details.push(data);
+
+        localStorage.setItem("user_arr", JSON.stringify(user_details));
+    })
+</script>
