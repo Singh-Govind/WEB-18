@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <h1 id="show"></h1>
+    <button id="inc">Increse</button>
+    <button id="dec">Decrese</button>
+</body>
+</html>
+
+<script>
+    // var count = localStorage.getItem("counter") || 0;
+    if(localStorage.getItem("counter") == null)
+    {
+        document.querySelector("#show").innerText = "The counter is Null";
+        count = 0;
+    }
+    else{
+        count = localStorage.getItem("counter");
+        document.querySelector("#show").innerText = count;
+    }
+
+    document.querySelector("#inc").addEventListener("click",function(){
+        count++;
+        localStorage.setItem("counter",count);
+        document.querySelector("#show").innerText = count;
+    })
+    document.querySelector("#dec").addEventListener("click",function(){
+        count--;
+        localStorage.setItem("counter",count);
+        document.querySelector("#show").innerText = count;
+    })
+</script>
